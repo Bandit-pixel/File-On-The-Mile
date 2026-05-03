@@ -1,0 +1,62 @@
+:root{
+  --bg:#fafafa;
+  --card:#ffffff;
+  --muted:#6c6f74;
+  --accent:#0b7cff;
+  --radius:12px;
+  --gap:14px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+  background:linear-gradient(180deg,#fbfdff 0%,var(--bg) 100%);
+  color:#0b0d0f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+main#app{
+  width:100%;
+  max-width:720px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+  align-items:start;
+}
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:0 6px 20px rgba(12,18,26,0.06);
+}
+h1,h2{margin:0 0 8px 0;font-weight:600}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 12px}
+.btn{
+  background:transparent;border:1px solid #e6e9ef;padding:10px 12px;border-radius:10px;
+  cursor:pointer;color:inherit;font-weight:600;
+  min-height:44px;display:inline-flex;align-items:center;gap:8px;
+}
+.btn.primary{background:var(--accent);color:white;border-color:transparent}
+.btn:disabled{opacity:0.5;cursor:default}
+.files{min-height:44px;padding:8px;border-radius:8px;border:1px dashed #eef2f6;background:#fcfeff}
+.link-area{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.link-area input[type="text"], #share-link{width:100%;padding:10px;border-radius:8px;border:1px solid #e6ecf5;background:#f7fbff}
+.actions{display:flex;gap:8px}
+
+/* Progress UI */
+#progress-wrap{margin-top:12px}
+.progress-label{font-size:13px;margin-bottom:6px}
+.progress-track{position:relative;height:12px;background:#eef4fb;border-radius:8px;overflow:hidden;border:1px solid rgba(11,124,255,0.08)}
+.progress-bar{position:absolute;left:0;top:0;bottom:0;width:0%;background:linear-gradient(90deg,var(--accent),#2bb3ff);transition:width 220ms linear}
+.progress-stripes{position:absolute;left:0;top:0;bottom:0;width:100%;background-image:linear-gradient(45deg, rgba(255,255,255,0.12) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.12) 75%, transparent 75%, transparent);background-size:24px 24px;opacity:0;transform:translateX(0);transition:opacity 180ms}
+.progress-track.active .progress-stripes{opacity:1; animation:stripe-move 1s linear infinite}
+@keyframes stripe-move{from{transform:translateX(0)}to{transform:translateX(-24px)}}
+
+.hidden{display:none}
+footer{opacity:0.85;text-align:center;margin-top:6px}
+#receive{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;min-width:280px;max-width:92%;z-index:40}

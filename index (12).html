@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Share-a-Link (client-only)</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "jszip": "https://esm.sh/jszip@4.1.0",
+      "pako": "https://esm.sh/pako@2.1.0"
+    }
+  }
+  </script>
+</head>
+<body>
+  <main id="app">
+    <section id="upload">
+      <div class="card">
+        <h1>Upload & Share</h1>
+        <p class="muted">Select files or a folder. A custom link will be generated — the file data is embedded into the link (fragment). Keep link to share.</p>
+
+        <div class="controls">
+          <label class="btn">
+            Choose files
+            <input id="file-input" type="file" multiple hidden />
+          </label>
+
+          <label class="btn" title="Upload payload to server and share a short landing link">
+            <input id="server-upload" type="checkbox" style="width:18px;height:18px;margin-right:8px;vertical-align:middle" /> Server upload
+          </label>
+
+          <button id="create-btn" class="btn primary" disabled>Create link</button>
+        </div>
+
+        <div id="files-list" class="files muted">No files selected</div>
+
+        <div id="progress-wrap" class="hidden" aria-hidden="true">
+          <div class="progress-label muted">Preparing upload…</div>
+          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="progress-bar"></div>
+            <div class="progress-stripes"></div>
+          </div>
+        </div>
+
+        <div id="link-area" class="link-area hidden">
+          <input id="share-link" readonly />
+          <div class="actions">
+            <button id="copy-btn" class="btn">Copy</button>
+            <button id="open-btn" class="btn">Open</button>
+            <button id="download-btn" class="btn" disabled>Download</button>
+            <button id="download-qr-btn" class="btn">Download QR (PNG)</button>
+          </div>
+          <p class="note muted small">Links can be large. For big uploads, use a server-backed solution.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="receive" class="card hidden">
+      <h2>Incoming file</h2>
+      <div id="receive-info" class="muted">Preparing...</div>
+      <div class="actions">
+        <button id="dl-btn" class="btn primary">Download</button>
+        <a id="raw-link" class="muted small" target="_blank" rel="noreferrer noopener">Open raw URL</a>
+      </div>
+    </section>
+
+    <footer class="muted small">Client-only demo • Files embedded in link fragment (#file=...). Works without a server. Recommended for small files and test use. I'm right here, hemmy boi 👋</footer>
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
